@@ -61,7 +61,7 @@ def egcd(A, B):
             return (f, d)               # Returns the x-value & the gcd of the 2 integers
 
 def Modular_Inverse(a, n):
-    """'Calculates the inverse of a (mod n) using the Extended Euclidean Algorithm."""
+    """Calculates the inverse of a (mod n) using the Extended Euclidean Algorithm."""
     inverse, d = egcd(a, n)
     if d != 1:
         print('Modular inverse does not exist. The gcd(a,n) must be equal to one')
