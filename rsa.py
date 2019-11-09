@@ -19,8 +19,8 @@ Usage:
 import random
 
 
-def gcd(a, b):                         
-    if b > a:                          
+def gcd(a, b):
+    if b > a:
         x, y = b, a
     else:
         x, y = a, b
@@ -141,8 +141,7 @@ def decrypt_message():
     print("c^d = m (mod n)")
     print("m = ", M)
     return M, c, d, n
-    
 
-def main():
+
+if __name__ == '__main__':
     decrypt_message()
-main()
