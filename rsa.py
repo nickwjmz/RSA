@@ -32,13 +32,12 @@ def gcd(a, b):
 
 
 def egcd(A, B):
-    '''
-Calculates x, y in the Extended Euclidean Algorithm (EEA) for integers a & b.
-Creates two lists--Xn and Yn--that represent the programs steps thru the EEA.
-The for loop then checks the calculations of the while loop by creating another
-value EE, and iterates thru the two lists doing the same calculations, and returning the
-values needed to produce the gcd(a,b)
-    '''
+    """Calculates x, y in the Extended Euclidean Algorithm (EEA) for integers a & b.
+    Creates two lists--Xn and Yn--that represent the programs steps thru the EEA.
+    The for loop then checks the calculations of the while loop by creating another
+    value EE, and iterates thru the two lists doing the same calculations, and returning the
+    values needed to produce the gcd(a,b).
+    """
     a, b = A, B
     d = gcd(A, B)
     xone, xtwo = 1, 0
@@ -62,9 +61,7 @@ values needed to produce the gcd(a,b)
             return (f, d)               # Returns the x-value & the gcd of the 2 integers
 
 def Modular_Inverse(a, n):
-    '''
-    Calculates the inverse of a (mod n) using the Extended Euclidean Algorithm.
-    '''
+    """'Calculates the inverse of a (mod n) using the Extended Euclidean Algorithm."""
     inverse, d = egcd(a, n)
     if d != 1:
         print('Modular inverse does not exist. The gcd(a,n) must be equal to one')
@@ -73,9 +70,7 @@ def Modular_Inverse(a, n):
 
 
 def Modular_Exponentiation(m, e, n):
-    '''
-    Calculates m^e (mod n) by the successive squares algorithm
-    '''
+    """Calculates m^e (mod n) by the successive squares algorithm."""
     a, b, c = e, 1, m
     while a != 0:    
         if a % 2 == 0:
@@ -86,10 +81,7 @@ def Modular_Exponentiation(m, e, n):
 
 
 def find_n():
-    '''
-    p and q are generated randomly and not checked for primality
-    
-    '''
+    """p and q are generated randomly and not checked for primality."""
     p = random.randint(1*10**100, 1*10**200)
     q = random.randint(1*10**100, 1*10**200)
     n = p*q
@@ -97,10 +89,9 @@ def find_n():
 
 
 def find_e():
-    '''
-    e is currently generated randomly depending on the
-    results of the find_n() function
-    '''
+    """e is currently generated randomly depending on the
+    results of the find_n() function.
+    """
     p, q, n = find_n()
     pq = (p-1) * (q-1)
     e = random.randint(1*10**100, 1*10**200)
@@ -116,11 +107,9 @@ def find_d():
 
 
 def encrypt_message():
-    '''
-    Randomizing m in function instead of
-    as an argument so that this fuction can
-    easily be passed off to decrypt_message
-    '''
+    """Randomizing m in function instead of as an argument allows this fuction
+    to easily be passed off to decrypt_message().
+    """
     d, e, pq, n, p, q = find_d()
     c = Modular_Exponentiation(random.randint(1*10**100, 1*10**200), e, n)
     print("PUBLIC KEY:")
@@ -134,6 +123,7 @@ def encrypt_message():
     print("m^e = c (mod n)")
     print("c = ", c)
     return c, d, n
+
 
 def decrypt_message():
     c, d, n = encrypt_message()
